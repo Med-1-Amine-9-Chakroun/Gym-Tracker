@@ -18,7 +18,7 @@ export default function Home() {
         });
     };
     fetchWorkouts();
-  }, []);
+  }, [dispatch]);
   return (
     <div className="home">
       <div className="workouts">
