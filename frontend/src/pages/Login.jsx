@@ -13,7 +13,7 @@ const Login = () => {
       <label>Email:</label>
       <input type="text" onChange={(e) => setEmail(e.target.value)} />
       <label>Password:</label>
-      <input type="text" onChange={(e) => setPassword(e.target.value)} />
+      <input type="password" onChange={(e) => setPassword(e.target.value)} />
       <button>Login</button>
     </form>
   );
