@@ -25,7 +25,9 @@ export default function WorkoutDetails({ workout }) {
         {workout.reps}
       </p>
       <p>{workout.createdAt}</p>
-      <span onClick={handleClick}>Delete</span>
+      <span className="material-symbols-outlined" onClick={handleClick}>
+        Delete
+      </span>
     </div>
   );
 }
