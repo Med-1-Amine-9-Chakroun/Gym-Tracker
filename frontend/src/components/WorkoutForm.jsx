@@ -1,9 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function WorkoutForm() {
   const { dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
+
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
@@ -12,6 +15,10 @@ export default function WorkoutForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) {
+      setError("You must be logged in");
+      return;
+    }
     // Method 1
     // try {
     //   axios
@@ -45,6 +52,7 @@ export default function WorkoutForm() {
       body: JSON.stringify(workout),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
     });
     const json = await response.json();
